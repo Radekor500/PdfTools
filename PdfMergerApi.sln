@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PdfMergerApi", "PdfMergerApi\PdfMergerApi.csproj", "{F24E2CC1-EB97-4377-91FD-29422C5485DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{383379C2-4B22-4231-B68C-6F71B01D5FC5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F24E2CC1-EB97-4377-91FD-29422C5485DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F24E2CC1-EB97-4377-91FD-29422C5485DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F24E2CC1-EB97-4377-91FD-29422C5485DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F24E2CC1-EB97-4377-91FD-29422C5485DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{383379C2-4B22-4231-B68C-6F71B01D5FC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{383379C2-4B22-4231-B68C-6F71B01D5FC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{383379C2-4B22-4231-B68C-6F71B01D5FC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{383379C2-4B22-4231-B68C-6F71B01D5FC5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {67F68A33-1CC6-4CB4-8BF4-7709EBA178E9}
+	EndGlobalSection
+EndGlobal
