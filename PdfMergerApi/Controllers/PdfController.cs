@@ -25,10 +25,10 @@ namespace PdfMergerApi.Controllers
                 var result = await _pdfService.MergePdf(pdf.pdfs);
                 return File(result, "application/pdf");
             }
-            catch (ArgumentException ex)
+            catch (Exception ex)
             {
 
-                throw ex;
+                throw new Exception(ex.Message);
             }
         }
 
