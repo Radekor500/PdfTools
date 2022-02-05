@@ -17,7 +17,7 @@ namespace PdfMergerApi.Controllers
 
         [HttpPost("merge")]
 
-        public async Task<FileContentResult> MergePdf([FromForm] PdfModel pdf)
+        public async Task<IActionResult> MergePdf([FromForm] PdfModel pdf)
         {
             
             try
@@ -27,8 +27,7 @@ namespace PdfMergerApi.Controllers
             }
             catch (Exception ex)
             {
-
-                throw new Exception(ex.Message);
+                return BadRequest(ex.Message);
             }
         }
 
