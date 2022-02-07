@@ -11,6 +11,35 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     margin: 0 auto;
-    height: 100vh;      
   }
+
+  .grid-wrap {
+    height: 100vh;
+    display: grid;
+    gap: 12px;
+    // grid-template-columns: repeat(4, 1fr);
+    // grid-template-rows: repeat(3, 1fr);
+    grid-template-areas:  
+    "navbar navbar navbar navbar"
+    "side menu menu side"
+    "foot foot foot foot";
+}
+
+  // app-pdf-merge-form {
+  //   grid-area: menu;
+  // }
+
+  // router-outlet {
+  //   grid-area: menu;
+  // }
+
+  app-navbar {
+    grid-area: navbar;
+    height: 300px;
+  }
+  .router-wrap {
+    grid-area: menu;
+  }
+
+
 
