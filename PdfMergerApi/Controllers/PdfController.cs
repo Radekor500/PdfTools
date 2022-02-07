@@ -23,7 +23,8 @@ namespace PdfMergerApi.Controllers
             try
             {
                 var result = await _pdfService.MergePdf(pdf.pdfs);
-                return File(result, "application/pdf");
+                var fileName = pdf.endFileName != null ? pdf.endFileName + "pdf" : "merged.pdf";
+                return File(result, "application/pdf", fileName);
             }
             catch (Exception ex)
             {

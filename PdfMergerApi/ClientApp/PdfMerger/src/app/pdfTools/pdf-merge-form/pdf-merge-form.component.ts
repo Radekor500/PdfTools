@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { PdfService } from 'src/app/services/pdf.service';
 
 @Component({
   selector: 'app-pdf-merge-form',
@@ -9,16 +10,16 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
 export class PdfMergeFormComponent implements OnInit {
 
   mergeForm: FormGroup
-  constructor(fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private pdfService: PdfService) {
     this.mergeForm = new FormGroup({
-      fileName: new FormControl(null),
-      pdfFiles: fb.array([])
+      endFileName: new FormControl(null),
+      //pdfs: fb.array(File[])
     })
    }
 
   pushPdf(pdf: any) {
     const newPdf = new FormControl(pdf, Validators.required);
-    (<FormArray>this.mergeForm.get('pdfFiles')).push(newPdf)
+    (<FormArray>this.mergeForm.get('pdfs')).push(newPdf)
   }
 
   onFileUpload(event: any) {
@@ -36,8 +37,37 @@ export class PdfMergeFormComponent implements OnInit {
     }
   }
 
+  // onSubmit(data: any) {
+  //   console.log(data);
+  //   this.pdfService.mergePdfs(data).subscribe(resp => {
+  //     console.log(resp);
+  //   })
+  // }
+
   onSubmit() {
-    console.log(this.mergeForm.value);
+    const formData = new FormData();
+    let files = document.getElementById('files') as any;
+    files = files.files;
+    console.log(files)
+    Object.keys(this.mergeForm.controls).forEach(key => {
+      console.log(key);
+      formData.append(key, this.mergeForm.value[key]);
+    });
+    // formData.append('pdfs', this.mergeForm.get('pdfs')?.value);
+    // files.files.forEach((pdf: any) => {
+    //   formData.append('pdfs', pdf)
+    // })
+    Object.keys(files).forEach(key => {
+      formData.append('pdfs', files[key]);
+    })
+    //formData.append('pdfs', files.files.FileList)
+    formData.forEach(item => console.log(item))
+    this.pdfService.mergePdfs(formData).subscribe(resp => {
+          const blob = new Blob([resp], {type: 'application/pdf'});
+          const url = window.URL.createObjectURL(blob);
+          window.open(url);
+
+        })
   }
   ngOnInit(): void {
   }
