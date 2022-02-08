@@ -1,8 +1,8 @@
 
         <div class="form">
           <form class="login-form" [formGroup]="mergeForm" (ngSubmit)="onSubmit()">
-            <input type="text" formControlName="endFileName" placeholder="File name">
-            <input id="files" formControlName="pdfs" type="file" multiple>
+            <input class="textInput" type="text" formControlName="endFileName" placeholder="File name">
+            <input class="fileInput" id="files" formControlName="pdfs" type="file" multiple>
             <button type="submit">Merge</button>
           </form>
         </div>

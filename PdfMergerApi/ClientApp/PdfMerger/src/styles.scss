@@ -3,7 +3,7 @@
 
 body {
     background: #76b852; /* fallback for old browsers */
-    background: -webkit-linear-gradient(right, #76b852, #8DC26F);
+    background: -webkit-linear-gradient(right, #488e9b, #15647c);
     background: -moz-linear-gradient(right, #76b852, #8DC26F);
     background: -o-linear-gradient(right, #76b852, #8DC26F);
     background: linear-gradient(to left, #76b852, #8DC26F);
@@ -11,18 +11,20 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     margin: 0 auto;
+    color: white;
   }
 
   .grid-wrap {
     height: 100vh;
     display: grid;
     gap: 12px;
+    justify-items: center;
     // grid-template-columns: repeat(4, 1fr);
-    // grid-template-rows: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
     grid-template-areas:  
-    "navbar navbar navbar navbar"
-    "side menu menu side"
-    "foot foot foot foot";
+    "navbar navbar  navbar navbar navbar navbar"
+    "side side      menu menu     r      r "
+    "foot foot      foot foot    foot foot";
 }
 
   // app-pdf-merge-form {
@@ -34,8 +36,10 @@ body {
   // }
 
   app-navbar {
+    // justify-self: start;
     grid-area: navbar;
-    height: 300px;
+    width: 100%;
+    // grid-column: 1/span;
   }
   .router-wrap {
     grid-area: menu;
