@@ -5,7 +5,7 @@ import { PdfService } from 'src/app/services/pdf.service';
 @Component({
   selector: 'app-pdf-merge-form',
   templateUrl: './pdf-merge-form.component.html',
-  styleUrls: ['./pdf-merge-form.component.scss']
+  styleUrls: ['../form-shared/form-styles.scss']
 })
 export class PdfMergeFormComponent implements OnInit {
 
@@ -33,6 +33,7 @@ export class PdfMergeFormComponent implements OnInit {
           const blob = new Blob([resp], {type: 'application/pdf'});
           const url = window.URL.createObjectURL(blob);
           window.open(url);
+          this.mergeForm.reset();
         })
   }
   ngOnInit(): void {

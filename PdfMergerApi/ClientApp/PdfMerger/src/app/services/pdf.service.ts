@@ -16,4 +16,9 @@ export class PdfService {
     return this.http.post(`${environment.apiUrl}/api/pdf/merge`, pdfFiles, httpOptions);
   }
 
+  splitPdf(splitData: FormData) : Observable<any> {
+    const httpOptions = {responseType: 'blob' as 'json'};
+    return this.http.post(`${environment.apiUrl}/api/pdf/split`, splitData, httpOptions);
+  }
+
 }
