@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PdfMergerApi.Binders;
 using PdfMergerApi.Models;
 using Services;
 
@@ -32,7 +33,25 @@ namespace PdfMergerApi.Controllers
             }
         }
 
-      
+        [HttpPost("split")]
+
+        public async Task<IActionResult> SplitPdf([ModelBinder(BinderType = typeof(JsonModelBinder))] IEnumerable<SplitFile> ranges, IFormFile pdf )
+        {
+
+            try
+            {
+                var result = await _pdfService.SplitPdf(ranges, pdf);
+                //var fileName = pdf.endFileName != null ? pdf.endFileName + "pdf" : "merged.pdf";
+                return File(result, "application/pdf", "split.pdf");
+                /*return Ok(ranges*/
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+
     }
 
 }

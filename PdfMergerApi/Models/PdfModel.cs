@@ -1,4 +1,6 @@
-﻿namespace PdfMergerApi.Models
+﻿using Microsoft.AspNetCore.Http;
+
+namespace PdfMergerApi.Models
 {
     public class PdfModel
     {
