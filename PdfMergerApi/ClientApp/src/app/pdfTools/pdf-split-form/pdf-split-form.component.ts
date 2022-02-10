@@ -12,7 +12,9 @@ export class PdfSplitFormComponent implements OnInit {
   splitForm: FormGroup
   constructor(private fb: FormBuilder, private pdfService: PdfService) {
     this.splitForm = fb.group({
-      ranges: fb.array([]),
+      rangeFrom: ['', Validators.required],
+      rangeTo: ['', Validators.required],
+      ranges: fb.array([], Validators.minLength(1)),
       pdf: ['', Validators.required],
     })
    }
@@ -27,11 +29,13 @@ export class PdfSplitFormComponent implements OnInit {
         splitStart: start,
         splitEnd: end
       })
+      this.splitForm.patchValue
      }
      
    }
    onSubmit(event: string) {
-     if (event === "main") {
+     console.log(this.splitForm)
+     if (event === "main" && this.splitForm.valid) {
        let file = document.getElementById('file') as any;
        console.log(file)
        const formData = new FormData();

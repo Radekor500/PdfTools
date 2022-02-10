@@ -11,30 +11,34 @@ export class PdfMergeFormComponent implements OnInit {
 
   mergeForm: FormGroup
   constructor(private fb: FormBuilder, private pdfService: PdfService) {
-    this.mergeForm = new FormGroup({
-      endFileName: new FormControl(null),
-    })
+    this.mergeForm = fb.group({
+      endFileName: [''],
+      pdfs: ['', Validators.required]
+    });
    }
 
   onSubmit() {
-    const formData = new FormData();
-    let files = document.getElementById('files') as any;
-    files = files.files;
-    console.log(files)
-    Object.keys(this.mergeForm.controls).forEach(key => {
-      console.log(key);
-      formData.append(key, this.mergeForm.value[key]);
-    });
-    Object.keys(files).forEach(key => {
-      formData.append('pdfs', files[key]);
-    })
-    formData.forEach(item => console.log(item))
-    this.pdfService.mergePdfs(formData).subscribe(resp => {
-          const blob = new Blob([resp], {type: 'application/pdf'});
-          const url = window.URL.createObjectURL(blob);
-          window.open(url);
-          this.mergeForm.reset();
-        })
+    if (this.mergeForm.valid) {
+      const formData = new FormData();
+      let files = document.getElementById('files') as any;
+      files = files.files;
+      console.log(files)
+      Object.keys(this.mergeForm.controls).forEach(key => {
+        console.log(key);
+        formData.append(key, this.mergeForm.value[key]);
+      });
+      Object.keys(files).forEach(key => {
+        formData.append('pdfs', files[key]);
+      })
+      formData.forEach(item => console.log(item))
+      this.pdfService.mergePdfs(formData).subscribe(resp => {
+            const blob = new Blob([resp], {type: 'application/pdf'});
+            const url = window.URL.createObjectURL(blob);
+            window.open(url);
+            this.mergeForm.reset();
+          })
+      }
+    
   }
   ngOnInit(): void {
   }

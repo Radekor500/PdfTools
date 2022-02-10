@@ -5,8 +5,9 @@ import { PdfSplitFormComponent } from './pdfTools/pdf-split-form/pdf-split-form.
 import { HomePageComponent } from './shared/home-page/home-page.component';
 
 const routes: Routes = [
+  {path: "", component: HomePageComponent},
   {path: "merge", component: PdfMergeFormComponent},
-  {path: "split", component: PdfSplitFormComponent}
+  {path: "select", component: PdfSplitFormComponent}
   
 ];
 

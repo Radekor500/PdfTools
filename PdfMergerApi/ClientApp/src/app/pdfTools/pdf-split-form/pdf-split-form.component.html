@@ -1,16 +1,23 @@
 <div class="form">
     <form class="login-form" [formGroup]="splitForm" (ngSubmit)="onSubmit($event.submitter.id)">
       <input class="fileInput" id="file" formControlName="pdf" type="file">
+      <span *ngIf="splitForm.controls['pdf'].invalid && splitForm.controls['pdf'].dirty ">
+        Please select the file</span>
       <div>
-        <input class="textInput" type="number" #start>
-        <input class="textInput" type="number" #end>
+        <label>From page:</label>
+        <input class="textInput" type="number" formControlName="rangeFrom" #start>
+        <label>to:</label>
+        <input class="textInput" type="number" formControlName="rangeTo" #end>
+        <span *ngIf="(splitForm.controls['rangeFrom'].invalid || splitForm.controls['rangeTo'].invalid) && 
+        (splitForm.controls['rangeFrom'].touched || splitForm.controls['rangeTo'].touched)">
+        Please select at least one range</span>
         <div class="range-wrap">
           <p *ngIf="ranges.length > 0">Selected ranges:</p>
           <p *ngFor="let range of ranges">{{ range.splitStart }} - {{ range.splitEnd }}</p>
         </div>
         <button id="secondary" (click)="addRange(start.value, end.value)">Add range</button>
       </div>
-      <button id="main" type="submit">Merge</button>
+      <button [disabled]="!splitForm.valid" id="main" type="submit">Merge</button>
     </form>
 </div>
 
