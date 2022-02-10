@@ -12,7 +12,6 @@ USER appuser
 FROM mcr.microsoft.com/dotnet/sdk:6.0-focal AS build
 WORKDIR /src
 COPY ["PdfMergerApi/PdfMergerApi.csproj", "PdfMergerApi/"]
-COPY ["Services/Services.csproj", "Services/"]
 RUN dotnet restore "PdfMergerApi/PdfMergerApi.csproj"
 COPY . .
 WORKDIR "/src/PdfMergerApi"
