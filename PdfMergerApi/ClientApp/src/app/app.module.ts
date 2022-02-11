@@ -8,6 +8,7 @@ import { PdfMergeFormComponent } from './pdfTools/pdf-merge-form/pdf-merge-form.
 import { HomePageComponent } from './shared/home-page/home-page.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { PdfSplitFormComponent } from './pdfTools/pdf-split-form/pdf-split-form.component';
+import { PdfExtractFormComponent } from './pdfTools/pdf-extract-form/pdf-extract-form.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { PdfSplitFormComponent } from './pdfTools/pdf-split-form/pdf-split-form.
     PdfMergeFormComponent,
     HomePageComponent,
     NavbarComponent,
-    PdfSplitFormComponent
+    PdfSplitFormComponent,
+    PdfExtractFormComponent
   ],
   imports: [
     BrowserModule,

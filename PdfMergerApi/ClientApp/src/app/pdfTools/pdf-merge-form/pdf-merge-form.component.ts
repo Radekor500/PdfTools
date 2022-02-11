@@ -22,15 +22,12 @@ export class PdfMergeFormComponent implements OnInit {
       const formData = new FormData();
       let files = document.getElementById('files') as any;
       files = files.files;
-      console.log(files)
       Object.keys(this.mergeForm.controls).forEach(key => {
-        console.log(key);
         formData.append(key, this.mergeForm.value[key]);
       });
       Object.keys(files).forEach(key => {
         formData.append('pdfs', files[key]);
       })
-      formData.forEach(item => console.log(item))
       this.pdfService.mergePdfs(formData).subscribe(resp => {
             const blob = new Blob([resp], {type: 'application/pdf'});
             const url = window.URL.createObjectURL(blob);

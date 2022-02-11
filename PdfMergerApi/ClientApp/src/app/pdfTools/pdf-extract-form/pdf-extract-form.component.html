@@ -1,0 +1,11 @@
+<div class="form">
+    <form class="login-form" [formGroup]="extractForm" (ngSubmit)="onSubmit()">
+      <input class="textInput" type="text" formControlName="pages" placeholder="Pages to extract">
+      <input class="fileInput" id="file" formControlName="pdf" type="file">
+      <button [disabled]="!extractForm.valid" type="submit">Extract</button>
+    </form>
+  </div>
+<div *ngIf="fileLink" class="download-btn">
+  <button (click)="downloadFile()">Download</button>
+</div>
+

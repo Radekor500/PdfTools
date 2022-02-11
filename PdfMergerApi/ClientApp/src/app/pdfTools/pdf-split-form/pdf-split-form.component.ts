@@ -34,29 +34,17 @@ export class PdfSplitFormComponent implements OnInit {
      
    }
    onSubmit(event: string) {
-     console.log(this.splitForm)
      if (event === "main" && this.splitForm.valid) {
        let file = document.getElementById('file') as any;
-       console.log(file)
        const formData = new FormData();
-        //console.log(this.splitForm.value)
-      //  Object.keys(this.splitForm.controls).forEach(key => {
-      //   console.log(key);
-      //   console.log(this.splitForm.value[key])
-      //   formData.append(key, this.splitForm.value[key]);
-      //   });
         formData.append('pdf', file.files[0]);
         formData.append("ranges", JSON.stringify(this.splitForm.get('ranges')?.value))
-        console.log("********")
-        formData.forEach(item => console.log(item))
         this.pdfService.splitPdf(formData).subscribe(resp => {
           const blob = new Blob([resp], {type: 'application/pdf'});
           const url = window.URL.createObjectURL(blob);
           window.open(url);
           this.splitForm.reset()
         })
-       
-
      }
    }
   ngOnInit(): void {

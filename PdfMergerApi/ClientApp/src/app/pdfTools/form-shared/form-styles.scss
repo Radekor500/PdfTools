@@ -79,3 +79,14 @@
    .range-wrap > * {
        margin: 4px;
    }
+
+   .download-btn {
+    text-align: center;
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .download-btn > * {
+    width: 50%;
+  }

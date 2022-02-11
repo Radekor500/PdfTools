@@ -21,4 +21,9 @@ export class PdfService {
     return this.http.post(`${environment.apiUrl}/api/pdf/split`, splitData, httpOptions);
   }
 
+  extractPdf(extractData: FormData) : Observable<any> {
+    const httpOptions = {responseType: "arraybuffer" as 'json'}
+    return this.http.post(`${environment.apiUrl}/api/pdf/extract`, extractData, httpOptions);
+  }
+
 }
