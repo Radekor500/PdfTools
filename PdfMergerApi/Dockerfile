@@ -11,6 +11,8 @@ USER appuser
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0-focal AS build
 WORKDIR /src
+RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash -
+RUN apt-get install -y nodejs
 COPY ["PdfMergerApi/PdfMergerApi.csproj", "PdfMergerApi/"]
 RUN dotnet restore "PdfMergerApi/PdfMergerApi.csproj"
 COPY . .

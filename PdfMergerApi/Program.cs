@@ -7,7 +7,7 @@ System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Inst
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("CorsPolicy",
-        builder => builder.WithOrigins("http://localhost:4200")
+        builder => builder.AllowAnyOrigin()
             .AllowAnyMethod()
             .AllowAnyHeader()
             //.AllowCredentials()
