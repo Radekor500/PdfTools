@@ -51,6 +51,21 @@ namespace PdfMergerApi.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        [HttpPost("extract")]
+        public async Task<IActionResult> ExtractPages([FromForm] IEnumerable<int> pages, IFormFile pdf)
+        {
+            
+            try
+            {
+                var result = await _pdfService.ExtractPages(pages, pdf);
+                //var fileName = pdf.endFileName != null ? pdf.endFileName + "pdf" : "merged.pdf";
+                return File(result, "application/zip", "extracted.zip");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
 
 
     }
