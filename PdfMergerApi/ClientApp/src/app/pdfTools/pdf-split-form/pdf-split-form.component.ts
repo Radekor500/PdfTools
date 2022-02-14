@@ -43,8 +43,8 @@ export class PdfSplitFormComponent implements OnInit {
           const blob = new Blob([resp], {type: 'application/pdf'});
           const url = window.URL.createObjectURL(blob);
           window.open(url);
-          this.splitForm.reset()
-        })
+        });
+        this.splitForm.reset();
      }
    }
   ngOnInit(): void {

@@ -32,8 +32,8 @@ export class PdfMergeFormComponent implements OnInit {
             const blob = new Blob([resp], {type: 'application/pdf'});
             const url = window.URL.createObjectURL(blob);
             window.open(url);
-            this.mergeForm.reset();
-          })
+          });
+          this.mergeForm.reset();
       }
     
   }

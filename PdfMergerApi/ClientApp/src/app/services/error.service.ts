@@ -15,6 +15,7 @@ export class ErrorService {
   }
 
   getServerErrorMessage(error: HttpErrorResponse): string {
+    console.log(error);
     return navigator.onLine ?    
            error.message :
            'No Internet Connection';

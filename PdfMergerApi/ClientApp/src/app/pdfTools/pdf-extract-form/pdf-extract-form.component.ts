@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { finalize } from 'rxjs';
 import { PdfService } from 'src/app/services/pdf.service';
+import { commaValidator } from './comma-validator-directive';
 
 @Component({
   selector: 'app-pdf-extract-form',
@@ -13,7 +15,7 @@ export class PdfExtractFormComponent implements OnInit {
   fileLink!: string;
   constructor(private fb: FormBuilder, private pdfService: PdfService) {
     this.extractForm = fb.group({
-      pages: ['', Validators.required],
+      pages: ['', [Validators.required, commaValidator(/^[0-9]+(,[0-9]+)*$/)]],
       pdf: ['', Validators.required]
     })
    }
@@ -32,8 +34,8 @@ export class PdfExtractFormComponent implements OnInit {
     this.pdfService.extractPdf(formData).subscribe(resp => {
       const blob = new Blob([resp], {type: 'application/zip'});
       this.fileLink = window.URL.createObjectURL(blob);
-      this.extractForm.reset();
     })
+    this.extractForm.reset();
   }
   ngOnInit(): void {
   }

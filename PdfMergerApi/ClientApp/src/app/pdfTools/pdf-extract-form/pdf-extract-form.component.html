@@ -1,6 +1,7 @@
 <div class="form">
     <form class="login-form" [formGroup]="extractForm" (ngSubmit)="onSubmit()">
-      <input class="textInput" type="text" formControlName="pages" placeholder="Pages to extract">
+      <span *ngIf="extractForm.controls['pages'].errors?.['forbiddenInput'] && extractForm.touched">Please seperate numbers with commas</span>
+      <input class="textInput" type="text" formControlName="pages" placeholder="Pages to extract. Ex: 1,2,3">
       <input class="fileInput" id="file" formControlName="pdf" type="file">
       <button [disabled]="!extractForm.valid" type="submit">Extract</button>
     </form>
