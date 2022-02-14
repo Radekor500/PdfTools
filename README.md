@@ -4,7 +4,8 @@ PdfTools is a simple WebApp which offers some useful pdf utilities. You can:
 
 * merge pdf files,
 * split pdf document into multiple files and download them as zip archive,
-* extract multiple page ranges from single pdf document,
+* extract multiple page ranges from single pdf document.
+
 PdfTools can be deployed locally or in a docker container.
 
 ## Getting Started
