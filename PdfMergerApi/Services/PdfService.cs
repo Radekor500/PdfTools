@@ -8,7 +8,7 @@ namespace Services
 {
     public class PdfService
     {
-        public async Task<byte[]> MergePdf(List<IFormFile> pdfs)
+        public byte[] MergePdf(List<IFormFile> pdfs)
         {
             using (var targetDoc = new PdfDocument())
             {
@@ -30,7 +30,7 @@ namespace Services
             }
         }
 
-        public async Task<byte[]> SplitPdf(IEnumerable<SplitFile> ranges, IFormFile pdf )
+        public byte[] SplitPdf(IEnumerable<SplitFile> ranges, IFormFile pdf )
         {
             using (var targetDoc = new PdfDocument())
             {
@@ -58,7 +58,7 @@ namespace Services
             }
         }
 
-        public async Task<byte[]> ExtractPages(IEnumerable<int> pages, IFormFile pdf)
+        public byte[] ExtractPages(IEnumerable<int> pages, IFormFile pdf)
         {
             using (var stream = new MemoryStream())
             {

@@ -19,12 +19,12 @@ namespace PdfMergerApi.Controllers
 
         [HttpPost("merge")]
 
-        public async Task<IActionResult> MergePdf([FromForm] PdfModel pdf)
+        public  IActionResult MergePdf([FromForm] PdfModel pdf)
         {
             
             try
             {
-                var result = await _pdfService.MergePdf(pdf.pdfs);
+                var result =  _pdfService.MergePdf(pdf.pdfs);
                 var fileName = pdf.endFileName != null ? pdf.endFileName + "pdf" : "merged.pdf";
                 return File(result, "application/pdf", fileName);
             }
@@ -36,12 +36,12 @@ namespace PdfMergerApi.Controllers
 
         [HttpPost("split")]
 
-        public async Task<IActionResult> SplitPdf([ModelBinder(BinderType = typeof(JsonModelBinder))] IEnumerable<SplitFile> ranges, IFormFile pdf )
+        public IActionResult SplitPdf([ModelBinder(BinderType = typeof(JsonModelBinder))] IEnumerable<SplitFile> ranges, IFormFile pdf )
         {
 
             try
             {
-                var result = await _pdfService.SplitPdf(ranges, pdf);
+                var result = _pdfService.SplitPdf(ranges, pdf);
                 //var fileName = pdf.endFileName != null ? pdf.endFileName + "pdf" : "merged.pdf";
                 return File(result, "application/pdf", "split.pdf");
                 /*return Ok(ranges*/
@@ -52,12 +52,12 @@ namespace PdfMergerApi.Controllers
             }
         }
         [HttpPost("extract")]
-        public async Task<IActionResult> ExtractPages([FromForm] IEnumerable<int> pages, IFormFile pdf)
+        public IActionResult ExtractPages([FromForm] IEnumerable<int> pages, IFormFile pdf)
         {
             
             try
             {
-                var result = await _pdfService.ExtractPages(pages, pdf);
+                var result =  _pdfService.ExtractPages(pages, pdf);
                 //var fileName = pdf.endFileName != null ? pdf.endFileName + "pdf" : "merged.pdf";
                 return File(result, "application/zip", "extracted.zip");
             }
