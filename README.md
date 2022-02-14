@@ -25,7 +25,7 @@ You can run the project locally with a few simple steps:
 
 ```
 git clone https://github.com/Radekor500/PdfTools.git
-cd cd PdfTools/PdfMergerApi
+cd PdfTools/PdfMergerApi
 dotnet run
 ```
 
