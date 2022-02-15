@@ -1,0 +1,20 @@
+@import '../form-shared/form-styles';
+
+.range-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 4px;
+    > * {
+        margin: 4px;
+    }
+   }
+
+.download-btn {
+    text-align: center;
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+    > * {
+    width: 50%;
+    }
+  }

@@ -1,92 +1,63 @@
+  $buttonBackground: #4CAF50;
+  $disabledBackground: #868585;
+
 
   .form {
     color: black;
-    //position: relative;
     grid-area: menu;
     display: flex;
     justify-content: center;
-    // z-index: 1;
     background: whitesmoke;
     border-radius: 5px;
     flex: 1;
     max-width: 360px;
-    //margin: 0 auto 100px;
     padding: 45px;
-    // text-align: center;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-  }
-  .form .textInput {
-    outline: 0;
-    background: #f2f2f2;
-    border-radius: 5px;
-    width: 100%;
-    border: 0;
-    margin: 0 0 15px;
-    padding: 15px;
-    box-sizing: border-box;
-    font-size: 14px;
+
+    .textInput {
+      outline: 0;
+      background: #f2f2f2;
+      border-radius: 5px;
+      width: 100%;
+      border: 0;
+      margin: 0 0 15px;
+      padding: 15px;
+      box-sizing: border-box;
+      font-size: 14px;
+    }
   }
 
   .fileInput {
     color: black;
     margin: 0 0 15px;
-    //padding: 15px;
   }
-
-  button :disabled {
-    cursor: not-allowed;
-    background: #5f695f;
-  }
-
-//   input.ng-touched.ng-invalid {
-//     background-color:red;
-// }
 
    button {
     border-radius: 5px;
     text-transform: uppercase;
     margin: 5px;
     outline: 0;
-    background: #4CAF50;
+    background: $buttonBackground;
     width: 100%;
     border: 0;
     padding: 15px;
-    color: #FFFFFF;
+    color: white;
     font-size: 14px;
     -webkit-transition: all 0.3 ease;
     transition: all 0.3 ease;
     cursor: pointer;
-  }
 
-  button:disabled,
-  button[disabled]{
-    background: #868585;
-    color: #ffffff;
-    cursor: not-allowed;
-  }
+    &:disabled {
+      cursor: not-allowed;
+      background: #5f695f;
+    }
+    &:disabled, button[disabled] {
+      background: $disabledBackground;
+      color: white;
+      cursor: not-allowed;
+    }
 
-  button:hover:enabled {
-    background: #43A047;
-  }
-
-
-   .range-wrap {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 4px;
-   }
-
-   .range-wrap > * {
-       margin: 4px;
-   }
-
-   .download-btn {
-    text-align: center;
-    margin-top: 5px;
-    display: flex;
-    justify-content: center;
-  }
-
-  .download-btn > * {
-    width: 50%;
+    &:hover:enabled {
+      background: darken($color: $buttonBackground, $amount: 4);
+    }
   }
