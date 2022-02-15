@@ -7,7 +7,7 @@ import { commaValidator } from './comma-validator-directive';
 @Component({
   selector: 'app-pdf-extract-form',
   templateUrl: './pdf-extract-form.component.html',
-  styleUrls: ['../form-shared/form-styles.scss']
+  styleUrls: ['.//pdf-extract-form.component.scss']
 })
 export class PdfExtractFormComponent implements OnInit {
 
